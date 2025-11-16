@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔗 URL Shortener</h1>
+            <p class="subtitle">Shorten your long URLs instantly</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="urlInput" 
+                        placeholder="Enter your long URL here (e.g., https://example.com)"
+                        autocomplete="off"
+                    >
+                    <button id="shortenBtn" onclick="shortenURL()">
+                        <span>Shorten</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="resultSection" class="result-section hidden">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>✅ URL Shortened Successfully!</h3>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-item">
+                            <label>Short URL:</label>
+                            <div class="url-display">
+                                <input type="text" id="shortURL" readonly>
+                                <button class="copy-btn" onclick="copyToClipboard('shortURL')">
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="result-item">
+                            <label>Original URL:</label>
+                            <div class="url-display">
+                                <a id="originalURL" href="#" target="_blank" rel="noopener noreferrer"></a>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="action-btn" onclick="viewStats()">View Stats</button>
+                            <button class="action-btn secondary" onclick="resetForm()">Shorten Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="statsSection" class="stats-section hidden">
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <h3>📊 URL Statistics</h3>
+                        <button class="close-btn" onclick="closeStats()">×</button>
+                    </div>
+                    <div class="stats-content">
+                        <div class="stat-item">
+                            <span class="stat-label">Short Code:</span>
+                            <span class="stat-value" id="statCode"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Clicks:</span>
+                            <span class="stat-value" id="statClicks"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Created:</span>
+                            <span class="stat-value" id="statCreated"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorSection" class="error-section hidden">
+                <div class="error-card">
+                    <span class="error-icon">⚠️</span>
+                    <p id="errorMessage"></p>
+                    <button class="action-btn" onclick="closeError()">OK</button>
+                </div>
+            </div>
+
+            <div id="loadingSection" class="loading-section hidden">
+                <div class="spinner"></div>
+                <p>Shortening URL...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ using Go</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
