@@ -264,12 +264,11 @@ func main() {
 	}
 
 	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
+    if port == "" {
+     port = "8080" // fallback for local dev
+}
 
-	fmt.Printf("Server starting on port %s\n", port)
-	fmt.Printf("Visit http://localhost:%s\n", port)
+log.Println("Server running on port:", port)
+log.Fatal(http.ListenAndServe(":"+port, r))
 
-	log.Fatal(http.ListenAndServe(":"+port, app.setupRoutes()))
 }
